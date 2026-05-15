@@ -133,25 +133,26 @@ body::before {
 .stat-halffifth { font-size: 10px; color: var(--ink-light); margin-top: 2px; }
 
 /* TRACKED STATS */
-.tracked-row { display: flex; gap: 10px; margin-bottom: 12px; }
+.tracked-row { display: flex; gap: 8px; margin-bottom: 12px; }
 .tracked-box {
-  flex: 1; background: var(--paper-dark);
+  flex: 1; min-width: 0; background: var(--paper-dark);
   border: 1px solid rgba(154,120,48,0.3); border-radius: 2px;
-  padding: 8px; text-align: center;
+  padding: 8px 4px; text-align: center;
 }
-.tracked-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); display: block; margin-bottom: 4px; }
-.tracked-controls { display: flex; align-items: center; justify-content: center; gap: 6px; }
+.tracked-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rust); display: block; margin-bottom: 4px; }
+.tracked-controls { display: flex; align-items: center; justify-content: center; gap: 4px; }
 .tracked-btn {
-  width: 28px; height: 28px; border: 1px solid var(--gold);
+  width: 26px; height: 26px; border: 1px solid var(--gold);
   background: transparent; border-radius: 2px;
-  font-size: 18px; color: var(--ink-fade); cursor: pointer;
+  font-size: 16px; color: var(--ink-fade); cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   font-family: 'Playfair Display', serif;
+  flex-shrink: 0;
   transition: background 0.1s;
 }
 .tracked-btn:active { background: var(--paper-dark); }
-.tracked-val { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--ink); min-width: 36px; }
-.tracked-max { font-size: 11px; color: var(--ink-light); }
+.tracked-val { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--ink); min-width: 28px; }
+.tracked-max { font-size: 10px; color: var(--ink-light); margin-top: 2px; }
 
 /* SKILL LIST */
 .skill-item {
@@ -171,7 +172,7 @@ body::before {
 .skill-tick {
   width: 22px; height: 22px; border: 1.5px solid var(--gold);
   border-radius: 2px; background: transparent; cursor: pointer;
-  flex-shrink: 0; margin-left: 8px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-right: 10px; margin-left: 0; display: flex; align-items: center; justify-content: center;
   transition: background 0.12s;
 }
 .skill-tick.ticked { background: var(--rust); border-color: var(--rust); }
@@ -287,7 +288,11 @@ body::before {
 .prose p:last-child { margin-bottom: 0; }
 .entry-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); display: block; margin-bottom: 2px; }
 .entry-text { font-size: 15px; color: var(--ink-fade); line-height: 1.6; margin-bottom: 10px; }
-.story-field { font-size: 15px; line-height: 1.7; color: var(--ink-fade); width: 100%; }
+.story-field {
+  font-size: 15px; line-height: 1.7; color: var(--ink-fade);
+  width: 100%; min-height: 60px;
+  overflow: hidden; resize: none;
+}
 
 /* SECTION DIVIDER */
 .section-rule {
@@ -580,12 +585,12 @@ body::before {
 
   <div class="card">
     <div class="card-title">Personal Description</div>
-    <textarea class="field-val story-field" id="story-desc" rows="6">Ezra is a large, heavyset Black man, broad through the chest and thick in the hands — the kind of build that comes from decades of hard living rather than hard labor. He stands just over six feet and carries his size with a slow, unhurried ease. His face is deeply lined, handsome in a weathered way, with close-cropped gray hair and a short beard going silver at the jaw. His eyes are dark and watchful. He dresses simply but carefully — a good vest, a clean shirt, well-worn but polished shoes. Onstage he fills any room with a voice like gravel dragged over warm wood.</textarea>
+    <textarea class="field-val story-field" id="story-desc">Ezra is a large, heavyset Black man, broad through the chest and thick in the hands — the kind of build that comes from decades of hard living rather than hard labor. He stands just over six feet and carries his size with a slow, unhurried ease. His face is deeply lined, handsome in a weathered way, with close-cropped gray hair and a short beard going silver at the jaw. His eyes are dark and watchful. He dresses simply but carefully — a good vest, a clean shirt, well-worn but polished shoes. Onstage he fills any room with a voice like gravel dragged over warm wood.</textarea>
   </div>
 
   <div class="card">
     <div class="card-title">Backstory</div>
-    <textarea class="field-val story-field" id="story-backstory" rows="10">Born in 1872 in the Tremé neighborhood of New Orleans, Ezra grew up in the thick of the city's musical culture — his grandmother sang in a Spiritual church, his uncle played cornet in a second-line band. He never held a steady job for long: carpentry for a season, loading docks for two, a stretch on a Mississippi riverboat as informal entertainment. He was always moving — hence the road name "Slow Train," given by a woman in Memphis who said he always arrived eventually, just never when expected.
+    <textarea class="field-val story-field" id="story-backstory">Born in 1872 in the Tremé neighborhood of New Orleans, Ezra grew up in the thick of the city's musical culture — his grandmother sang in a Spiritual church, his uncle played cornet in a second-line band. He never held a steady job for long: carpentry for a season, loading docks for two, a stretch on a Mississippi riverboat as informal entertainment. He was always moving — hence the road name "Slow Train," given by a woman in Memphis who said he always arrived eventually, just never when expected.
 
 He married once, in his thirties, to a Creole schoolteacher named Celestine. She died of the influenza in 1918. He has not married again. The loss sits in his music like a splinter — you feel it without always being able to name it.
 
@@ -594,17 +599,17 @@ Word reached him in 1925 through a booking agent that a lounge in Manhattan was 
 
   <div class="card">
     <div class="card-title">Traits</div>
-    <textarea class="field-val story-field" id="story-traits" rows="4">Observant and slow to speak — he listens twice before he talks once. Warm with strangers, especially the tired or the lost. Unhurried to the point of seeming indifferent; rarely rattled by urgency. Superstitious in a quiet, practical way — he takes omens seriously without making a show of it.</textarea>
+    <textarea class="field-val story-field" id="story-traits">Observant and slow to speak — he listens twice before he talks once. Warm with strangers, especially the tired or the lost. Unhurried to the point of seeming indifferent; rarely rattled by urgency. Superstitious in a quiet, practical way — he takes omens seriously without making a show of it.</textarea>
   </div>
 
   <div class="card">
     <div class="card-title">Ideology &amp; Beliefs</div>
-    <textarea class="field-val story-field" id="story-ideology" rows="4">Believes the world has more texture than most people want to admit — spirits, signs, the weight of places. Loosely Baptist by upbringing, but his real faith is in music as a vehicle for truth that words alone cannot carry. Deep, bone-level skepticism of authority and institutions — not angry, just undeceived. Believes suffering is not wasted if it gets turned into something honest.</textarea>
+    <textarea class="field-val story-field" id="story-ideology">Believes the world has more texture than most people want to admit — spirits, signs, the weight of places. Loosely Baptist by upbringing, but his real faith is in music as a vehicle for truth that words alone cannot carry. Deep, bone-level skepticism of authority and institutions — not angry, just undeceived. Believes suffering is not wasted if it gets turned into something honest.</textarea>
   </div>
 
   <div class="card">
     <div class="card-title">Significant People</div>
-    <textarea class="field-val story-field" id="story-people" rows="6">Celestine Calhoun (deceased) — His wife. Dead ten years. She is the reason his slow songs stop rooms.
+    <textarea class="field-val story-field" id="story-people">Celestine Calhoun (deceased) — His wife. Dead ten years. She is the reason his slow songs stop rooms.
 Marvell "Preacher" Dupree — Old friend and harmonica player still in New Orleans. The one person Ezra writes letters to.
 Ruby Fontaine — Runs a boarding house on Decatur Street. Not a romance — a mutual understanding.
 Calvin Oates — The booking agent who arranged the New York engagement. Ezra trusts him about as far as he can throw him.</textarea>
@@ -612,40 +617,40 @@ Calvin Oates — The booking agent who arranged the New York engagement. Ezra tr
 
   <div class="card">
     <div class="card-title">Phobias &amp; Manias</div>
-    <textarea class="field-val story-field" id="story-phobias" rows="5">PHOBIA — Deep Still Water: Not rivers or rain, but dark standing water, ponds, the sea at night. Rooted in a near-drowning in the bayou as a child.
+    <textarea class="field-val story-field" id="story-phobias">PHOBIA — Deep Still Water: Not rivers or rain, but dark standing water, ponds, the sea at night. Rooted in a near-drowning in the bayou as a child.
 PHOBIA — Covered Mirrors: A mirror covered or turned to the wall in an empty room fills him with dread he cannot fully explain.
 MANIA: Compelled to learn the story behind any piece of music he hears — who wrote it, where it came from, what happened to the person who made it.</textarea>
   </div>
 
   <div class="card">
     <div class="card-title">Injuries &amp; Scars</div>
-    <textarea class="field-val story-field" id="story-injuries" rows="4">Left forearm — A long pale scar from a knife fight in a Baton Rouge juke joint, circa 1905. He does not discuss it.
+    <textarea class="field-val story-field" id="story-injuries">Left forearm — A long pale scar from a knife fight in a Baton Rouge juke joint, circa 1905. He does not discuss it.
 Right hand — Ring and pinky fingers broken badly in 1919 and healed crooked. He adapted his guitar style around them.
 Right knee — Chronic low ache, worse in cold weather. Walks with a slight drag when tired.</textarea>
   </div>
 
   <div class="card">
     <div class="card-title">Meaningful Locations</div>
-    <textarea class="field-val story-field" id="story-locations" rows="4">Tremé, New Orleans — Where he was born and where Celestine is buried. Home in the way that has nothing to do with comfort.
+    <textarea class="field-val story-field" id="story-locations">Tremé, New Orleans — Where he was born and where Celestine is buried. Home in the way that has nothing to do with comfort.
 A roadhouse outside Clarksdale, MS — The first place he ever played to a paying crowd and felt, briefly, like he understood what he was for.
 Penn Station, New York — Where he arrived. Still the only part of this city that makes sense to him.</textarea>
   </div>
 
   <div class="card">
     <div class="card-title">Treasured Possessions</div>
-    <textarea class="field-val story-field" id="story-treasures" rows="4">His guitar — A 1911 parlor guitar, sunburst finish worn to bare wood at the edges, replaced tuning peg on the G string. Owned seventeen years. It has no name. He would not replace it.
+    <textarea class="field-val story-field" id="story-treasures">His guitar — A 1911 parlor guitar, sunburst finish worn to bare wood at the edges, replaced tuning peg on the G string. Owned seventeen years. It has no name. He would not replace it.
 Photograph of Celestine — Taken on their wedding day, slightly out of focus. Kept folded in the inside pocket of his vest.
 Gris-gris bag — Small, cloth, worn on a cord under his shirt. Given by his grandmother. He has never opened it.</textarea>
   </div>
 
   <div class="card">
     <div class="card-title">Arcane Tomes &amp; Spells</div>
-    <textarea class="field-val story-field" id="tomes-field" rows="3" placeholder="None yet…"></textarea>
+    <textarea class="field-val story-field" id="tomes-field" placeholder="None yet…"></textarea>
   </div>
 
   <div class="card">
     <div class="card-title">Encounters with Strange Entities</div>
-    <textarea class="field-val story-field" id="encounters-field" rows="4" placeholder="None yet…"></textarea>
+    <textarea class="field-val story-field" id="encounters-field" placeholder="None yet…"></textarea>
   </div>
 </div>
 
@@ -1115,6 +1120,18 @@ function toast(msg) {
   setTimeout(() => t.classList.remove('show'), 1800);
 }
 
+// AUTO-RESIZE TEXTAREAS
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+function initAutoResize() {
+  document.querySelectorAll('.story-field').forEach(el => {
+    autoResize(el);
+    el.addEventListener('input', () => autoResize(el));
+  });
+}
+
 // INIT
 renderStats();
 renderSkills();
@@ -1124,6 +1141,7 @@ renderFellows();
 updateTracked();
 bindTextareas();
 bindCheckboxes();
+initAutoResize();
 </script>
 </body>
 </html>
